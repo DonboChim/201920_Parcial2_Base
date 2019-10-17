@@ -2,7 +2,7 @@
 
 namespace AI
 {
-    public abstract class SelectWithOption : Node
+    public abstract class SelectWithOption : Selector
     {
         [SerializeField]
         private Group successTree;
@@ -10,7 +10,10 @@ namespace AI
         [SerializeField]
         private Group failTree;
 
-        public abstract bool Check();
+        protected override bool Check()
+        {
+            throw new System.NotImplementedException();
+        }
 
         public override void Execute()
         {

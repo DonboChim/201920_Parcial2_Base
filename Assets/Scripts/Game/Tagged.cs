@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using AI;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class IsActorTagged : SelectWithOption
+public class Tagged : MonoBehaviour
 {
     GameController gamecontroller;
 
@@ -14,19 +15,10 @@ public class IsActorTagged : SelectWithOption
     {
         if (collision.gameObject.tag == "Player")
         {
-            
-            Execute();
+            gamecontroller.UpdateTaggedScore(gameObject.name);
         }
     }
-    public override void Execute()
-    {
-        base.Execute();
-        gamecontroller.UpdateTaggedScore(gameObject.name);
-        Check();
-    }
 
-    protected override bool Check()
-    {
-        return true;
-    }
+    // Update is called once per frame
+
 }

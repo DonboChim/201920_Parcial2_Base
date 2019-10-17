@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
         onTaggedChange -= UpdateTaggedScore;
     }
 
-    private void UpdateTaggedScore(string newTaggedPlayer)
+    public void UpdateTaggedScore(string newTaggedPlayer)
     {
         taggedScore[newTaggedPlayer] += 1;
     }
