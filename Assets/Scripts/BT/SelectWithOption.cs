@@ -4,15 +4,16 @@ namespace AI
 {
     public abstract class SelectWithOption : Selector
     {
+        protected bool completed;
         [SerializeField]
         private Group successTree;
 
         [SerializeField]
         private Group failTree;
 
-        protected override bool Check()
+        protected override bool Check( )
         {
-            throw new System.NotImplementedException();
+            return completed;
         }
 
         public override void Execute()

@@ -9,9 +9,10 @@ public abstract class PlayerController : MonoBehaviour
     [SerializeField]
     private float stopTime = 3F;
 
-    protected NavMeshAgent agent { get; set; }
+     protected NavMeshAgent agent { get; set; }
 
-    public bool IsTagged { get; protected set; }
+    public int taggedscore;
+    [SerializeField] public bool IsTagged; 
 
     public void SwitchRoles()
     {
@@ -25,11 +26,14 @@ public abstract class PlayerController : MonoBehaviour
         agent.SetDestination(location);
     }
 
-    public virtual IEnumerator StopLogic()
+    public  IEnumerator StopLogic()
     {
         // Stop BT runner if AI player, else stop movement.
+        gameObject.GetComponent<NavMeshAgent>().speed = 0;
+        taggedscore++;
 
         yield return new WaitForSeconds(stopTime);
+        gameObject.GetComponent<NavMeshAgent>().speed =3.5f;
         
         // Restart stuff.
     }
@@ -42,13 +46,16 @@ public abstract class PlayerController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected void OnTriggerEnter(Collider other)
     {
-        SwitchRoles();
-
-        if (IsTagged)
+        if (other.gameObject.tag == "Player")
         {
-            StopLogic(); 
+            SwitchRoles();
+
+            if (IsTagged)
+            {
+                StartCoroutine("StopLogic");
+            }
         }
     }
 }
