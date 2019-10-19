@@ -1,3 +1,3 @@
 # Parcial2_Base
- 
-Se añadio movimiento al player, se arreglaron las herencias con selectwithoption, se puso el behavior tree y se añadio funcionalidad cuando se taggea un jugador
+ Adrian Osorio Restrepo
+el tiempo de la partida es de 30 segundos, por ahora muestra el ultimo jugador de la lista que menos puntos tenga, osea que solamente muestra el nombre de uno de los ganadores en caso de que existan varios players con los mismos puntos al final.
